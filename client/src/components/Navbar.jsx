@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { assets } from '../assets/assets'; // Adjust the path based on your project structure
- // <-- adjust this path based on your project
+import { assets } from '../assets/assets';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,89 +13,71 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-orange-100 to-orange-200 shadow-md sticky top-0 z-50 backdrop-blur-lg bg-opacity-80 border-b border-orange-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20 items-center">
-          {/* Logo & Brand */}
-          <div className="flex items-center gap-3">
-            <img
-              src={assets.koiRound}
-              alt="KoiCareLanka Logo"
-              className="w-12 h-12 md:w-16 md:h-16 object-contain rounded-xl shadow-md"
-            />
-            <div className="text-2xl md:text-3xl font-extrabold text-gray-800 tracking-tight leading-tight">
-              <span className="text-orange-500">Koi</span>
-              <span className="text-orange-700">Care</span>
-              <span className="text-orange-400">Lanka</span>
-            </div>
+    <nav className="fixed top-0 z-50 left-1/2 transform -translate-x-1/2 w-[95%] sm:w-[90%] max-w-5xl px-4 sm:px-6 lg:px-8 backdrop-blur-md bg-white/10 border-b border-white/30 shadow-sm rounded-xl mt-4 text-white">
+      <div className="flex justify-between h-20 items-center">
+        {/* Logo & Brand */}
+        <div className="flex items-center gap-3">
+          <img
+            src={assets.koiRound}
+            alt="KoiCareLanka Logo"
+            className="w-12 h-12 md:w-16 md:h-16 object-contain rounded-xl shadow-md"
+          />
+          <div className="text-lg sm:text-xl md:text-3xl font-extrabold text-white tracking-tight leading-tight">
+            <span className="text-orange-500">Koi</span>
+            <span className="text-orange-700">Care</span>
+            <span className="text-orange-400">Lanka</span>
           </div>
+        </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8 items-center">
-            {['shop', 'breeders', 'services', 'community', 'guides'].map((item) => (
-              <a
-                key={item}
-                href={`#${item}`}
-                className={`relative px-2 py-1 text-gray-800 hover:text-orange-700 transition-all duration-200 font-medium ${
-                  activeLink === item ? 'text-orange-900 font-semibold' : ''
-                }`}
-                onClick={() => handleLinkClick(item)}
-              >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-                {activeLink === item && (
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-orange-700 rounded-full animate-underline"></span>
-                )}
-              </a>
-            ))}
-            <div className="ml-6">
-              <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2 rounded-full hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-orange-400/40 flex items-center">
-                <span>Login</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 ml-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Toggle */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={toggleMenu}
-              className="text-orange-800 focus:outline-none p-2 rounded-full hover:bg-orange-300 transition-colors"
+        {/* Desktop Menu */}
+        <div className="hidden md:flex space-x-6 items-center">
+          {['shop', 'breeders', 'services', 'community', 'guides'].map((item) => (
+            <a
+              key={item}
+              href={`#${item}`}
+              className={`relative text-sm md:text-base px-2 py-1 hover:text-orange-400 transition-colors duration-300 ${
+                activeLink === item ? 'font-semibold text-orange-300' : 'text-white'
+              }`}
+              onClick={() => handleLinkClick(item)}
             >
-              {isOpen ? <X size={28} className="text-orange-700" /> : <Menu size={28} />}
-            </button>
-          </div>
+              {item.charAt(0).toUpperCase() + item.slice(1)}
+              {activeLink === item && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-orange-500 rounded-full animate-underline"></span>
+              )}
+            </a>
+          ))}
+          <button className="ml-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-5 py-2 rounded-full hover:from-orange-600 hover:to-orange-700 transition duration-300 shadow-md">
+            Login
+          </button>
+        </div>
+
+        {/* Mobile Toggle */}
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={toggleMenu}
+            className="text-white focus:outline-none p-2 rounded-full hover:bg-orange-500/20 transition"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
       </div>
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="md:hidden bg-gradient-to-b from-orange-100 to-orange-200 px-4 pt-2 pb-6 space-y-3 shadow-lg animate-slideDown">
+        <div className="md:hidden bg-gradient-to-b from-orange-900 via-orange-700 to-orange-600 px-4 pt-3 pb-5 space-y-3 shadow-lg animate-slideDown rounded-xl mt-2 text-white">
           {['shop', 'breeders', 'services', 'community', 'guides'].map((item) => (
             <a
               key={item}
               href={`#${item}`}
-              className={`block px-4 py-3 rounded-lg text-orange-900 hover:bg-orange-300 transition-colors font-medium ${
-                activeLink === item ? 'bg-orange-200 text-ornage-800 font-semibold' : ''
+              className={`block px-4 py-2 rounded-lg hover:bg-orange-500 transition-colors duration-300 ${
+                activeLink === item ? 'bg-orange-600 font-semibold' : ''
               }`}
               onClick={() => handleLinkClick(item)}
             >
               {item.charAt(0).toUpperCase() + item.slice(1)}
             </a>
           ))}
-          <button className="w-full mt-4 text-center bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-full hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg">
+          <button className="w-full mt-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-full hover:from-orange-600 hover:to-orange-700 transition duration-300 shadow-md">
             Login
           </button>
         </div>
@@ -107,7 +88,7 @@ export default function Navbar() {
         @keyframes slideDown {
           from {
             opacity: 0;
-            transform: translateY(-20px);
+            transform: translateY(-10px);
           }
           to {
             opacity: 1;
@@ -117,9 +98,6 @@ export default function Navbar() {
         .animate-slideDown {
           animation: slideDown 0.3s ease-out forwards;
         }
-        .animate-underline {
-          animation: underlineGrow 0.3s ease-out forwards;
-        }
         @keyframes underlineGrow {
           from {
             transform: scaleX(0);
@@ -127,6 +105,9 @@ export default function Navbar() {
           to {
             transform: scaleX(1);
           }
+        }
+        .animate-underline {
+          animation: underlineGrow 0.3s ease-out forwards;
         }
       `}</style>
     </nav>
