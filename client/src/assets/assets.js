@@ -1,4 +1,5 @@
 import khoku from './khoku-img.jpg';
+import hiutsuri from './hiutsuri.jpeg'
 import blog_pic_8 from './blog_pic_8.png';
 import blog_pic_9 from './blog_pic_9.png';
 import blog_pic_10 from './blog_pic_10.png';
@@ -186,35 +187,46 @@ export const assets = {
 export const koiVarieties = [
   {
     id: 1,
-    name: 'Kohaku',
+    name: "Kohaku",
+    category: "Classic Red & White",
     image: khoku,
-    description: 'Kohaku are white koi with red (hi) markings. It’s one of the oldest and most popular koi varieties.',
+    description: "The most beloved koi variety with pristine white base and vibrant red patterns."
   },
   {
     id: 2,
-    name: 'Sanke (Taisho)',
-    image: khoku,
-    description: 'Sanke koi have a white body with red and black markings. Elegant and highly admired.',
+    name: "Sanke",
+    category: "Tri-Color Beauty",
+    image: hiutsuri,
+    description: "Stunning tri-color with balanced white, red, and black distribution."
   },
   {
     id: 3,
-    name: 'Showa',
+    name: "Showa",
+    category: "Bold & Dramatic",
     image: khoku,
-    description: 'Showa are black koi with red and white markings, giving them a powerful, dramatic look.',
+    description: "Commanding presence with black base and red-white accents."
   },
   {
     id: 4,
-    name: 'Utsurimono',
-    image: khoku,
-    description: 'These are black koi with white, red, or yellow markings. Very striking contrast.',
+    name: "Ogon",
+    category: "Golden Metallic",
+    image:hiutsuri,
+    description: "Lustrous metallic beauty that shimmers like precious gold."
   },
   {
     id: 5,
-    name: 'Shusui',
+    name: "Asagi",
+    category: "Blue Scale Classic",
     image: khoku,
-    description: 'Shusui are a Doitsu (scaleless) version of Asagi with blue backs and red sides.',
+    description: "Ancient variety with beautiful blue-gray scales and red accents."
   },
-  // Add more varieties as needed
+  {
+    id: 6,
+    name: "Butterfly Koi",
+    category: "Elegant Longfin",
+    image: khoku,
+    description: "Graceful flowing fins that dance like silk in the water."
+  }
 ];
 
 // export const comments_data = [
