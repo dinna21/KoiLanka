@@ -320,3 +320,48 @@ export const koiVarieties = [
 //     ],
 //   },
 // ];
+
+
+  // Pond services data
+export const pondServices = [
+    {
+      id: 1,
+      title: "Pond Design & Construction",
+      front: "Custom-designed water features",
+      back: "We create ecosystems tailored to your space and koi needs, using premium materials and filtration systems.",
+      icon: assets.pond_design_icon // Add to your assets
+    },
+    {
+      id: 2,
+      title: "Water Quality Management",
+      front: "Crystal clear water guaranteed",
+      back: "Regular testing and treatment plans to maintain perfect pH, ammonia, and nitrate levels.",
+      icon: assets.water_test_icon
+    }
+    // Add more services...
+  ];
+
+  // Breeder profiles data
+export const breeders = [
+    {
+      id: 101,
+      name: "Hiroshi Tanaka",
+      specialty: "Kohaku & Sanke",
+      front: "30 years breeding champion lines",
+      back: "Master breeder from Niigata with 15 All Japan Koi Show awards.",
+      koiBred: "1,200+",
+      rating: 4.9,
+      image: assets.breeder1 // Add to your assets
+    },
+    {
+      id: 102,
+      name: "Yuki Nakamura",
+      specialty: "Showa & Utsuri",
+      front: "Black & red pattern specialist",
+      back: "Focuses on bold sumi patterns and deep beni coloration.",
+      koiBred: "800+",
+      rating: 4.7,
+      image: assets.breeder2
+    }
+    // Add more breeders...
+  ];
