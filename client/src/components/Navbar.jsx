@@ -34,7 +34,7 @@ export default function Navbar() {
           {['shop', 'breeders', 'services', 'community', 'guides'].map((item) => (
             <a
               key={item}
-              href={`#${item}`}
+              href={`/${item}`}
               className={`relative text-sm md:text-base px-2 py-1 hover:text-orange-400 transition-colors duration-300 ${
                 activeLink === item ? 'font-semibold text-orange-300' : 'text-white'
               }`}
@@ -68,7 +68,7 @@ export default function Navbar() {
           {['shop', 'breeders', 'services', 'community', 'guides'].map((item) => (
             <a
               key={item}
-              href={`#${item}`}
+              href={`/${item}`}
               className={`block px-4 py-2 rounded-lg hover:bg-orange-500 transition-colors duration-300 ${
                 activeLink === item ? 'bg-orange-600 font-semibold' : ''
               }`}
