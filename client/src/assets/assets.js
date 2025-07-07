@@ -228,6 +228,44 @@ export const koiVarieties = [
     description: "Graceful flowing fins that dance like silk in the water."
   }
 ];
+export const koiCarpList = [
+  {
+    id: 1,
+    name: "Tancho Kohaku",
+    image: khoku,
+    price: 12000,
+    breeder: "Shinoda Koi Farm",
+    breederId: "shinoda",
+    variety: "Kohaku",
+  },
+  {
+    id: 2,
+    name: "Showa Sanshoku",
+    image: khoku,
+    price: 15000,
+    breeder: "Dainichi Koi Farm",
+    breederId: "dainichi",
+    variety: "Showa",
+  },
+  {
+    id: 3,
+    name: "Sanke",
+    image: khoku,
+    price: 9800,
+    breeder: "Marudo Koi Farm",
+    breederId: "marudo",
+    variety: "Sanke",
+  },
+  {
+    id: 4,
+    name: "Platinum Ogon",
+    image: khoku,
+    price: 6500,
+    breeder: "Shinoda Koi Farm",
+    breederId: "shinoda",
+    variety: "Ogon",
+  },
+];
 
 // export const comments_data = [
 //         {
