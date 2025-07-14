@@ -85,13 +85,19 @@ export default function ShopPage() {
   });
 
   return (
-    <div className="bg-white text-gray-800">
+    <div className="bg-white text-gray-800 mt-0">
       {/* Hero Section */}
-      <div className="bg-orange-500 text-white text-center py-16 px-4 bg-[url('https://ik.imagekit.io/your_path/koi-banner.jpg')] bg-cover bg-center">
-        <h1 className="text-4xl font-bold mb-2">Browse Our Premium Koi Collection</h1>
-        <p className="mb-4">Discover exceptional quality koi from Sri Lanka's finest breeders</p>
-        <button className="bg-white text-orange-500 px-6 py-2 rounded font-semibold">Explore Now</button>
-      </div>
+<div className="relative bg-orange-500 text-white text-center py-16 px-4 bg-cover bg-center mt-25">
+  {/* Fallback background color */}
+  <div className="absolute inset-0 bg-black/50"></div>
+  <div className="relative z-10">
+    <h1 className="text-4xl font-bold mb-2">Browse Our Premium Koi Collection</h1>
+    <p className="mb-4 text-lg">Discover exceptional quality koi from Sri Lanka's finest breeders</p>
+    <button className="bg-white text-orange-500 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
+      Explore Now
+    </button>
+  </div>
+</div>
 
       {/* Filters */}
       <div className="flex flex-wrap gap-4 px-6 py-6 justify-center bg-gray-100">
