@@ -13,7 +13,7 @@ const HomeServices = () => {
   };
 
   return (
-    <section className="py-19 px-4 sm:px-8 bg-gradient-to-b from-[#0f0f0f] to-[#1a1a1a] text-white">
+    <section className="py-19 px-1 sm:px-8 bg-gradient-to-b from-[#0f0f0f] to-[#1a1a1a] text-white">
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
         <h2 className="text-4xl font-bold text-center mb-12">
