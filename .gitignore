@@ -42,3 +42,4 @@ dist-ssr
 *.mp4
 *.webm
 *.avi
+.env
