@@ -57,20 +57,28 @@ const BackgroundElements = () => (
   </div>
 );
 
-const SectionTitle = ({ title }) => (
-  <div className="text-center mb-12">
-    <h3 className="text-2xl font-bold text-white mb-2">{title}</h3>
-    <div className="w-16 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 mx-auto" />
+const SectionTitle = ({ title, subtitle }) => (
+  <div className="text-center mb-16">
+    <p className="text-orange-400 text-sm uppercase tracking-widest mb-2">Bred with Excellence</p>
+    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">{title}</h2>
+    <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-4">{subtitle}</p>
+    <div className="w-24 h-1 bg-gradient-to-r from-orange-500 via-red-500 to-orange-500 mx-auto" />
   </div>
 );
 
 const CTA = () => (
-  <div className="text-center mt-12">
-    <div className="bg-gradient-to-r from-gray-900/50 to-black/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-6">
-      <p className="text-gray-300 mb-4">Ready to find your perfect koi companion?</p>
-      <button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-        View All Varieties →
-      </button>
+  <div className="text-center mt-16">
+    <div className="bg-gradient-to-r from-gray-900/50 to-black/50 backdrop-blur-sm border border-orange-500/30 rounded-2xl p-8 shadow-2xl">
+      <h3 className="text-2xl font-bold text-white mb-3">Ready to Start Your Koi Journey?</h3>
+      <p className="text-gray-300 mb-6 max-w-xl mx-auto">Connect with Sri Lanka's finest breeders and find koi that match your passion and pond</p>
+      <div className="flex flex-wrap gap-4 justify-center">
+        <button className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-orange-500/50">
+          Browse All Varieties
+        </button>
+        <button className="bg-white/10 hover:bg-white/20 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105">
+          Meet Breeders
+        </button>
+      </div>
     </div>
   </div>
 );
@@ -82,7 +90,10 @@ const KoiVarieties = () => {
     <section className="relative bg-black text-white py-32 px-6 md:px-12 overflow-hidden">
       <BackgroundElements />
       <div className="max-w-7xl mx-auto relative z-10">
-        <SectionTitle title="Our Premium Varieties" />
+        <SectionTitle
+          title="Discover Premium Koi Varieties"
+          subtitle="Authentic Japanese bloodlines, expertly bred and cared for in Sri Lanka's perfect climate"
+        />
 
         {/* 📌 UPDATED: more flexible and wider-spread layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">

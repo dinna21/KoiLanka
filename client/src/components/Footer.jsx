@@ -13,10 +13,18 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-800 pb-10">
         {/* Branding */}
         <div>
-          <h3 className="text-2xl font-bold text-orange-500 mb-3">KoiCareLanka</h3>
-          <p className="text-gray-400 text-sm leading-relaxed">
-            Discover, connect, and care with Sri Lanka’s trusted koi community. From rare koi to expert advice — it starts here.
+          <div className="flex items-center gap-2 mb-3">
+            <h3 className="text-2xl font-bold text-orange-500">KoiCareLanka</h3>
+            <span className="text-2xl">🇱🇰</span>
+          </div>
+          <p className="text-gray-400 text-sm leading-relaxed mb-4">
+            Sri Lanka's premier koi community connecting passionate breeders and collectors from Colombo to Kandy. Your trusted partner in the koi journey.
           </p>
+          <div className="flex items-center gap-2 text-xs text-gray-500">
+            <span>🌊 Island-wide delivery</span>
+            <span>•</span>
+            <span>✓ Verified breeders</span>
+          </div>
         </div>
 
         {/* Navigation */}
@@ -67,8 +75,13 @@ const Footer = () => {
       </div>
 
       {/* Bottom Line */}
-      <div className="text-center mt-6 text-gray-500 text-xs">
-        © {new Date().getFullYear()} KoiCareLanka. All rights reserved.
+      <div className="text-center mt-8">
+        <div className="inline-flex items-center gap-3 bg-gray-900/50 px-6 py-3 rounded-full mb-4">
+          <span className="text-orange-500 font-semibold text-sm">Made with ❤️ in Sri Lanka</span>
+        </div>
+        <p className="text-gray-500 text-xs">
+          © {new Date().getFullYear()} KoiCareLanka. All rights reserved. | Serving the island's koi community with pride.
+        </p>
       </div>
     </footer>
   );

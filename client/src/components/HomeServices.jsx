@@ -16,17 +16,23 @@ const HomeServices = () => {
     <section className="py-19 px-4 sm:px-8 bg-gradient-to-b from-[#0f0f0f] to-[#1a1a1a] text-white">
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
-        <h2 className="text-4xl font-bold text-center mb-12">
-          Our <span className="text-orange-500">Koi</span> Ecosystem
-        </h2>
+        <div className="text-center mb-16">
+          <p className="text-orange-400 text-sm uppercase tracking-widest mb-2">Complete Koi Solutions</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Sri Lanka's <span className="text-orange-500">Koi</span> Ecosystem
+          </h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">From award-winning breeders to professional pond services, everything you need for a thriving koi collection</p>
+        </div>
 
         {/* Columns */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {/* Pond Services */}
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-white border-b border-orange-500 pb-2">
-              Premium Pond Services
-            </h3>
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold text-white mb-2">Premium Pond Services</h3>
+              <p className="text-gray-400 text-sm">Professional design, maintenance & water quality management</p>
+              <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 mt-3" />
+            </div>
             {pondServices.map((service) => (
               <div
                 key={service.id}
@@ -69,9 +75,11 @@ const HomeServices = () => {
 
           {/* Breeders */}
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-white border-b border-orange-500 pb-2">
-              Certified Breeder Network
-            </h3>
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold text-white mb-2">Certified Breeder Network</h3>
+              <p className="text-gray-400 text-sm">Connect with Sri Lanka's most trusted and experienced koi breeders</p>
+              <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 mt-3" />
+            </div>
             {breeders.map((breeder) => (
               <div
                 key={breeder.id}
