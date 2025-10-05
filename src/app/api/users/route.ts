@@ -42,9 +42,9 @@ export async function POST(request: NextRequest) {
       { success: true, data: userResponse },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error) {
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: (error as Error).message },
       { status: 400 }
     );
   }

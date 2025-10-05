@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     const breeder = searchParams.get('breeder');
     const available = searchParams.get('available');
 
-    let query: any = {};
+    const query: Record<string, unknown> = {};
 
     if (breed) query.breed = breed;
     if (breeder) query.breederName = breeder;
@@ -22,9 +22,9 @@ export async function GET(request: NextRequest) {
     const koi = await Koi.find(query).sort({ createdAt: -1 });
 
     return NextResponse.json({ success: true, data: koi }, { status: 200 });
-  } catch (error: any) {
+  } catch (error) {
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: (error as Error).message },
       { status: 500 }
     );
   }
@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
   try {
     const session = await auth();
 
-    if (!session || !['breeder', 'admin'].includes((session.user as any)?.role)) {
+    if (!session || !['breeder', 'admin'].includes((session.user as { role?: string })?.role || '')) {
       return NextResponse.json(
         { success: false, error: 'Unauthorized' },
         { status: 401 }
@@ -48,9 +48,9 @@ export async function POST(request: NextRequest) {
     const koi = await Koi.create(body);
 
     return NextResponse.json({ success: true, data: koi }, { status: 201 });
-  } catch (error: any) {
+  } catch (error) {
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: (error as Error).message },
       { status: 400 }
     );
   }

@@ -4,6 +4,13 @@ import bcrypt from 'bcryptjs';
 import dbConnect from '@/lib/mongodb';
 import User from '@/models/User';
 
+interface ExtendedUser {
+  id: string;
+  email: string;
+  name: string;
+  role: string;
+}
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     CredentialsProvider({
@@ -39,22 +46,29 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           email: user.email,
           name: user.name,
           role: user.role,
-        };
+        } as ExtendedUser;
       },
     }),
   ],
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.role = (user as any).role;
-        token.id = user.id;
+        const extendedUser = user as ExtendedUser;
+        token.role = extendedUser.role;
+        token.id = extendedUser.id;
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        (session.user as any).role = token.role;
-        (session.user as any).id = token.id;
+        return {
+          ...session,
+          user: {
+            ...session.user,
+            role: token.role as string,
+            id: token.id as string,
+          }
+        };
       }
       return session;
     },
