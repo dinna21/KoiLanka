@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { koiVarieties } from '../assets/assets';
 
 const KoiCard = ({ koi, index, isActive, onHover, onLeave }) => {
@@ -21,8 +22,8 @@ const KoiCard = ({ koi, index, isActive, onHover, onLeave }) => {
             }`}
             loading="lazy"
           />
-          <div className="relative inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          <div className=" inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-red-500/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-red-500/10" />
           <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-orange-500/30">
             <span className="text-white font-bold text-sm tracking-wide">{koi.name}</span>
           </div>
@@ -58,19 +59,27 @@ const BackgroundElements = () => (
 );
 
 const SectionTitle = ({ title }) => (
-  <div className="text-center mb-12">
-    <h3 className="text-2xl font-bold text-white mb-2">{title}</h3>
-    <div className="w-16 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 mx-auto" />
+  <div className="text-center mb-14">
+    <span className="text-xs font-semibold tracking-widest text-orange-400 uppercase mb-2 block">Sri Lanka's Finest</span>
+    <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">{title}</h2>
+    <p className="text-gray-400 max-w-lg mx-auto text-base">
+      Hand-selected koi from Japan's legendary farms — now thriving in Sri Lankan ponds.
+    </p>
+    <div className="w-16 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 mx-auto mt-4" />
   </div>
 );
 
 const CTA = () => (
-  <div className="text-center mt-12">
-    <div className="bg-gradient-to-r from-gray-900/50 to-black/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-6">
-      <p className="text-gray-300 mb-4">Ready to find your perfect koi companion?</p>
-      <button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+  <div className="text-center mt-14">
+    <div className="bg-gradient-to-r from-gray-900/60 to-black/60 backdrop-blur-sm border border-gray-800 rounded-2xl p-8">
+      <p className="text-white font-semibold text-lg mb-1">Ready to find your perfect koi companion?</p>
+      <p className="text-gray-400 text-sm mb-6">Explore our full collection of premium imported and locally-bred koi.</p>
+      <Link
+        to="/shop"
+        className="inline-block bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold px-8 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg shadow-orange-500/20"
+      >
         View All Varieties →
-      </button>
+      </Link>
     </div>
   </div>
 );

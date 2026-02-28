@@ -25,7 +25,7 @@ export default function Navbar() {
     px-2 sm:px-6 lg:px-8 py-2.5 transition-all duration-300 rounded-xl
     ${isHomePage 
       ? 'bg-white/10 backdrop-blur-md text-white border border-white/30 shadow-md' 
-      : 'bg-gray-700 text-gray-800 border border-gray-200 shadow-md'}
+      : 'bg-gray-800 text-white border border-gray-700 shadow-md'}
   `}
 >
       <div className="flex justify-between h-20 items-center">
