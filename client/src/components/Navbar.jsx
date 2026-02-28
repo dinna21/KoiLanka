@@ -9,7 +9,8 @@ export default function Navbar() {
   const [activeLink, setActiveLink] = useState(null);
 
   const location = useLocation();
-  const isShopPage = location.pathname === '/shop';
+  const isHomePage = location.pathname === '/';
+
 
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -19,13 +20,14 @@ export default function Navbar() {
   };
 
   return (
-      <nav
-        className={`fixed top-0 z-50 left-1/2 transform -translate-x-1/2 w-[95%] sm:w-[90%] max-w-5xl px-4 sm:px-6 lg:px-8 border-b shadow-sm rounded-xl mt-4
-          $${isShopPage
-            ? 'bg-black/90 backdrop-blur-md border-gray-200 text-orange-500'
-            : 'bg-white/10 backdrop-blur-md border-white/30 text-white'}
-        `}
-      >
+<nav
+  className={`fixed top-0 z-50 left-1/2 transform -translate-x-1/2 w-[90%] sm:w-[90%] max-w-5xl
+    px-2 sm:px-6 lg:px-8 py-2.5 transition-all duration-300 rounded-xl
+    ${isHomePage 
+      ? 'bg-white/10 backdrop-blur-md text-white border border-white/30 shadow-md' 
+      : 'bg-gray-700 text-gray-800 border border-gray-200 shadow-md'}
+  `}
+>
       <div className="flex justify-between h-20 items-center">
         {/* Logo & Brand */}
         <div className="flex items-center gap-3">
