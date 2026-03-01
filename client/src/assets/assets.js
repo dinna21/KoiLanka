@@ -1,61 +1,10 @@
-import khoku from './khoku-img.jpg';
-import hiutsuri from './hiutsuri.jpeg'
-import blog_pic_8 from './blog_pic_8.png';
-import blog_pic_9 from './blog_pic_9.png';
-import blog_pic_10 from './blog_pic_10.png';
-import facebook_icon from './facebook_icon.svg'
-import googleplus_icon from './googleplus_icon.svg'
-import twitter_icon from './twitter_icon.svg'
-import logo from './logo.svg'
-import arrow from './arrow.svg'
-import logo_light from './logo_light.svg'
-import blog_icon from './blog_icon.png'
-import add_icon from './add_icon.svg'
-import list_icon from './list_icon.svg'
-import email_icon from './email_icon.png'
-import upload_area from './upload_area.svg'
-import user_icon from './user_icon.svg'
-import bin_icon from './bin_icon.svg'
-import comment_icon from './comment_icon.svg'
-import tick_icon from './tick_icon.svg'
-import star_icon from './star_icon.svg'
-import cross_icon from './cross_icon.svg'
-import home_icon from './home_icon.svg'
-import gradientBackground from './gradientBackground.png'
-import dashboard_icon_1 from './dashboard_icon_1.svg'
-import dashboard_icon_2 from './dashboard_icon_2.svg'
-import dashboard_icon_3 from './dashboard_icon_3.svg'
-import dashboard_icon_4 from './dashboard_icon_4.svg'
-import koivideo from './v1-koi.mp4'
-import KoiLogo from './KoiLogo.jpg'
-import Koi1 from './Koi1.jpg'
-import koiRound from './koiRound.png'
+const khoku = 'https://images.pexels.com/photos/2131828/pexels-photo-2131828.jpeg';
+const hiutsuri = 'https://images.pexels.com/photos/5463595/pexels-photo-5463595.jpeg';
+const koivideo = 'https://videos.pexels.com/video-files/7654866/7654866-hd_1920_1080_30fps.mp4';
+const koiRound = 'https://images.pexels.com/photos/2131828/pexels-photo-2131828.jpeg';
+
 export const assets = {
-    facebook_icon,
-    googleplus_icon,
-    twitter_icon,
-    logo,
-    arrow,
-    logo_light,
-    blog_icon,
-    add_icon,
-    email_icon,
-    upload_area,
-    user_icon,
-    bin_icon,
-    comment_icon,
-    tick_icon,
-    star_icon,
-    home_icon,
-    gradientBackground,
-    list_icon,
-    cross_icon,
-    dashboard_icon_1,
-    dashboard_icon_2,
-    dashboard_icon_3,
-    dashboard_icon_4,
     koivideo,
-    KoiLogo,
     koiRound,
 }
 // export const blogCategories = ['All', 'Technology', 'Startup', 'Lifestyle', 'Finance']
@@ -189,42 +138,42 @@ export const koiVarieties = [
     id: 1,
     name: "Kohaku",
     category: "Classic Red & White",
-    image: khoku,
+    image: 'https://images.pexels.com/photos/2131828/pexels-photo-2131828.jpeg',
     description: "The most beloved koi variety with pristine white base and vibrant red patterns."
   },
   {
     id: 2,
     name: "Sanke",
     category: "Tri-Color Beauty",
-    image: hiutsuri,
+    image: 'https://images.pexels.com/photos/5463595/pexels-photo-5463595.jpeg',
     description: "Stunning tri-color with balanced white, red, and black distribution."
   },
   {
     id: 3,
     name: "Showa",
     category: "Bold & Dramatic",
-    image: khoku,
+    image: 'https://images.pexels.com/photos/5463601/pexels-photo-5463601.jpeg',
     description: "Commanding presence with black base and red-white accents."
   },
   {
     id: 4,
     name: "Ogon",
     category: "Golden Metallic",
-    image:hiutsuri,
+    image: 'https://images.pexels.com/photos/4587998/pexels-photo-4587998.jpeg',
     description: "Lustrous metallic beauty that shimmers like precious gold."
   },
   {
     id: 5,
     name: "Asagi",
     category: "Blue Scale Classic",
-    image: khoku,
+    image: 'https://images.pexels.com/photos/2131828/pexels-photo-2131828.jpeg',
     description: "Ancient variety with beautiful blue-gray scales and red accents."
   },
   {
     id: 6,
     name: "Butterfly Koi",
     category: "Elegant Longfin",
-    image: khoku,
+    image: 'https://images.pexels.com/photos/7934236/pexels-photo-7934236.jpeg',
     description: "Graceful flowing fins that dance like silk in the water."
   }
 ];
@@ -232,7 +181,7 @@ export const koiCarpList = [
   {
     id: 1,
     name: "Tancho Kohaku",
-    image: khoku,
+    image: 'https://images.pexels.com/photos/2131828/pexels-photo-2131828.jpeg',
     price: 12000,
     breeder: "Shinoda Koi Farm",
     breederId: "shinoda",
@@ -241,7 +190,7 @@ export const koiCarpList = [
   {
     id: 2,
     name: "Showa Sanshoku",
-    image: khoku,
+    image: 'https://images.pexels.com/photos/5463601/pexels-photo-5463601.jpeg',
     price: 15000,
     breeder: "Dainichi Koi Farm",
     breederId: "dainichi",
@@ -250,7 +199,7 @@ export const koiCarpList = [
   {
     id: 3,
     name: "Sanke",
-    image: khoku,
+    image: 'https://images.pexels.com/photos/5463595/pexels-photo-5463595.jpeg',
     price: 9800,
     breeder: "Marudo Koi Farm",
     breederId: "marudo",
@@ -259,7 +208,7 @@ export const koiCarpList = [
   {
     id: 4,
     name: "Platinum Ogon",
-    image: khoku,
+    image: 'https://images.pexels.com/photos/4587998/pexels-photo-4587998.jpeg',
     price: 6500,
     breeder: "Shinoda Koi Farm",
     breederId: "shinoda",
@@ -367,16 +316,15 @@ export const pondServices = [
       title: "Pond Design & Construction",
       front: "Custom-designed water features",
       back: "We create ecosystems tailored to your space and koi needs, using premium materials and filtration systems.",
-      icon: assets.pond_design_icon // Add to your assets
+      icon: 'https://images.pexels.com/photos/3755511/pexels-photo-3755511.jpeg'
     },
     {
       id: 2,
       title: "Water Quality Management",
       front: "Crystal clear water guaranteed",
       back: "Regular testing and treatment plans to maintain perfect pH, ammonia, and nitrate levels.",
-      icon: assets.water_test_icon
+      icon: 'https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg'
     }
-    // Add more services...
   ];
 
   // Breeder profiles data
@@ -389,7 +337,7 @@ export const breeders = [
       back: "Master breeder from Niigata with 15 All Japan Koi Show awards.",
       koiBred: "1,200+",
       rating: 4.9,
-      image: assets.breeder1 // Add to your assets
+      image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg'
     },
     {
       id: 102,
@@ -399,7 +347,6 @@ export const breeders = [
       back: "Focuses on bold sumi patterns and deep beni coloration.",
       koiBred: "800+",
       rating: 4.7,
-      image: assets.breeder2
+      image: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg'
     }
-    // Add more breeders...
   ];

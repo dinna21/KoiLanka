@@ -30,13 +30,13 @@ export default function Header() {
           /> */}
 
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 animate-fadeInUp">
-            Discover Sri Lanka's <span className="text-orange-400">Koi Paradise</span>
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 animate-fadeInUp drop-shadow-2xl">
+            Sri Lanka's Premier <span className="text-orange-400">Koi Community</span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg md:text-2xl text-white mb-8 max-w-xl mx-auto md:mx-0 animate-fadeInUp delay-200">
-            Connect with passionate breeders, explore rare koi, and design your dream pond.
+          <p className="text-lg md:text-2xl text-white mb-8 max-w-2xl mx-auto md:mx-0 animate-fadeInUp delay-200 leading-relaxed">
+            Join the island's most trusted network of breeders, collectors, and koi enthusiasts. From Colombo to Kandy, discover premium Japanese koi bred in Sri Lankan waters.
           </p>
 
           {/* CTA Buttons */}
@@ -62,9 +62,9 @@ export default function Header() {
         <div className="bg-white/70 backdrop-blur-md rounded-lg mx-auto max-w-4xl p-4 shadow-lg">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <StatItem number="250+" label="Koi Varieties" />
-            <StatItem number="50+" label="Verified Breeders" />
-            <StatItem number="1000+" label="Happy Customers" />
-            <StatItem number="24/7" label="Pond Support" />
+            <StatItem number="50+" label="Sri Lankan Breeders" />
+            <StatItem number="1000+" label="Community Members" />
+            <StatItem number="24/7" label="Expert Support" />
           </div>
         </div>
       </div>
