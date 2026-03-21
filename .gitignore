@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Next.js
+.next
+out
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -43,3 +47,4 @@ dist-ssr
 *.webm
 *.avi
 .env
+.env.local
