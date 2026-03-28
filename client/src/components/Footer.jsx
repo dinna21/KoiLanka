@@ -9,79 +9,92 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-t from-[#0d0d0d] to-black text-white pt-20 pb-10 px-2 sm:px-12 mt-0">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-800 pb-10">
-        {/* Branding */}
-        <div>
-          <div className="flex items-center gap-2 mb-3">
+    <footer className="bg-black pt-16 px-4">
+      <div className="bg-[#131314] w-full max-w-[1350px] mx-auto text-white pt-8 lg:pt-12 px-4 sm:px-8 md:px-16 lg:px-28 rounded-tl-3xl rounded-tr-3xl overflow-hidden">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-6 gap-8 md:gap-12">
+          <div className="lg:col-span-3 space-y-6">
             <h3 className="text-2xl font-bold text-orange-500">KoiCareLanka</h3>
-            <span className="text-2xl">🇱🇰</span>
+
+            <p className="text-sm leading-relaxed text-neutral-300 max-w-sm">
+              Sri Lanka's premier koi community connecting passionate breeders and collectors from Colombo to Kandy. Your trusted partner in the koi journey.
+            </p>
+
+            <div className="flex gap-5">
+              <a href="#" className="text-white hover:text-orange-400 transition-colors duration-200">
+                <FaFacebookF size={18} />
+              </a>
+              <a href="#" className="text-white hover:text-orange-400 transition-colors duration-200">
+                <FaInstagram size={18} />
+              </a>
+              <a href="#" className="text-white hover:text-orange-400 transition-colors duration-200">
+                <FaTwitter size={18} />
+              </a>
+              <a href="#" className="text-white hover:text-orange-400 transition-colors duration-200">
+                <FaYoutube size={18} />
+              </a>
+              <a href="#" className="text-white hover:text-orange-400 transition-colors duration-200">
+                <FaEnvelope size={18} />
+              </a>
+            </div>
+
+            <p className="text-sm text-gray-400">hello@koicarelanka.com</p>
           </div>
-          <p className="text-gray-400 text-sm leading-relaxed mb-4">
-            Sri Lanka's premier koi community connecting passionate breeders and collectors from Colombo to Kandy. Your trusted partner in the koi journey.
+
+          <div className="lg:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 lg:gap-20 items-start">
+            <div>
+              <h4 className="font-medium text-sm text-white mb-4">Quick Links</h4>
+              <ul className="space-y-3 text-sm text-neutral-300">
+                <li><a href="#" className="hover:text-orange-400 transition-colors">Shop</a></li>
+                <li><a href="#" className="hover:text-orange-400 transition-colors">Breeders</a></li>
+                <li><a href="#" className="hover:text-orange-400 transition-colors">Services</a></li>
+                <li><a href="#" className="hover:text-orange-400 transition-colors">Community</a></li>
+                <li><a href="#" className="hover:text-orange-400 transition-colors">Guides</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-medium text-sm text-white mb-4">Support</h4>
+              <ul className="space-y-3 text-sm text-neutral-300">
+                <li><a href="#" className="hover:text-orange-400 transition-colors">Contact Us</a></li>
+                <li><a href="#" className="hover:text-orange-400 transition-colors">FAQs</a></li>
+                <li><a href="#" className="hover:text-orange-400 transition-colors">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-orange-400 transition-colors">Terms of Use</a></li>
+              </ul>
+            </div>
+
+            <div className="col-span-2 md:col-span-1">
+              <h4 className="font-medium text-sm text-white mb-4">Company</h4>
+              <ul className="space-y-3 text-sm text-neutral-300">
+                <li><a href="#" className="hover:text-orange-400 transition-colors">About</a></li>
+                <li><a href="#" className="hover:text-orange-400 transition-colors">Vision</a></li>
+                <li className="flex items-center gap-2">
+                  <a href="#" className="hover:text-orange-400 transition-colors">Careers</a>
+                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-orange-950 border border-orange-400/40 text-orange-300">
+                    HIRING
+                  </span>
+                </li>
+                <li><a href="#" className="hover:text-orange-400 transition-colors">Island-wide Delivery</a></li>
+                <li><a href="#" className="hover:text-orange-400 transition-colors">Verified Breeders</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto mt-12 pt-4 border-t border-neutral-800 flex flex-col sm:flex-row justify-between items-center gap-2">
+          <p className="text-neutral-400 text-sm">
+            © {new Date().getFullYear()} KoiCareLanka. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 text-xs text-gray-500">
-            <span>🌊 Island-wide delivery</span>
-            <span>•</span>
-            <span>✓ Verified breeders</span>
-          </div>
+          <p className="text-sm text-neutral-400">
+            Serving the island's koi community with pride.
+          </p>
         </div>
 
-        {/* Navigation */}
-        <div>
-          <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
-          <ul className="space-y-2 text-sm text-gray-300">
-            <li><a href="#" className="hover:text-orange-400 transition">Shop</a></li>
-            <li><a href="#" className="hover:text-orange-400 transition">Breeders</a></li>
-            <li><a href="#" className="hover:text-orange-400 transition">Services</a></li>
-            <li><a href="#" className="hover:text-orange-400 transition">Community</a></li>
-            <li><a href="#" className="hover:text-orange-400 transition">Guides</a></li>
-          </ul>
+        <div className="relative">
+          <div className="absolute inset-x-0 bottom-0 mx-auto w-full max-w-3xl h-full max-h-64 bg-orange-500/20 rounded-full blur-[170px] pointer-events-none" />
+          <h3 className="text-center font-extrabold leading-[0.7] text-transparent text-[clamp(3rem,15vw,15rem)] [-webkit-text-stroke:1px_rgba(249,115,22,0.25)] mt-6">
+            KoiCareLanka
+          </h3>
         </div>
-
-        {/* Support */}
-        <div>
-          <h4 className="text-lg font-semibold text-white mb-4">Support</h4>
-          <ul className="space-y-2 text-sm text-gray-300">
-            <li><a href="#" className="hover:text-orange-400 transition">Contact Us</a></li>
-            <li><a href="#" className="hover:text-orange-400 transition">FAQs</a></li>
-            <li><a href="#" className="hover:text-orange-400 transition">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-orange-400 transition">Terms of Use</a></li>
-          </ul>
-        </div>
-
-        {/* Social & Newsletter */}
-        <div>
-          <h4 className="text-lg font-semibold text-white mb-4">Stay Connected</h4>
-          <div className="flex space-x-4 mb-4">
-            <a href="#" className="p-2 bg-white/10 hover:bg-orange-500 rounded-full transition">
-              <FaFacebookF className="text-white" />
-            </a>
-            <a href="#" className="p-2 bg-white/10 hover:bg-orange-500 rounded-full transition">
-              <FaInstagram className="text-white" />
-            </a>
-            <a href="#" className="p-2 bg-white/10 hover:bg-orange-500 rounded-full transition">
-              <FaTwitter className="text-white" />
-            </a>
-            <a href="#" className="p-2 bg-white/10 hover:bg-orange-500 rounded-full transition">
-              <FaYoutube className="text-white" />
-            </a>
-            <a href="mailto:hello@koicarelanka.com" className="p-2 bg-white/10 hover:bg-orange-500 rounded-full transition">
-              <FaEnvelope className="text-white" />
-            </a>
-          </div>
-          <p className="text-sm text-gray-400">hello@koicarelanka.com</p>
-        </div>
-      </div>
-
-      {/* Bottom Line */}
-      <div className="text-center mt-8">
-        <div className="inline-flex items-center gap-3 bg-gray-900/50 px-6 py-3 rounded-full mb-4">
-          <span className="text-orange-500 font-semibold text-sm">Made with ❤️ in Sri Lanka</span>
-        </div>
-        <p className="text-gray-500 text-xs">
-          © {new Date().getFullYear()} KoiCareLanka. All rights reserved. | Serving the island's koi community with pride.
-        </p>
       </div>
     </footer>
   );
