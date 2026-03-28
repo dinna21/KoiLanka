@@ -1,9 +1,35 @@
-import React, { useState } from 'react';
-import { pondServices } from '../assets/assets';
-import { breeders } from '../assets/assets';
+import React, { useMemo, useState } from 'react';
+import { motion as Motion } from 'framer-motion';
+import { pondServices, breeders } from '../assets/assets';
 
 const HomeServices = () => {
   const [flippedCards, setFlippedCards] = useState({});
+
+  const topRatedBreeders = useMemo(
+    () =>
+      [...breeders]
+        .sort((a, b) => {
+          if (b.rating !== a.rating) return b.rating - a.rating;
+          if (b.experienceYears !== a.experienceYears) return b.experienceYears - a.experienceYears;
+          return a.name.localeCompare(b.name);
+        })
+        .slice(0, 2),
+    []
+  );
+
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut', staggerChildren: 0.12 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut' } },
+  };
 
   const toggleFlip = (id) => {
     setFlippedCards((prev) => ({
@@ -13,130 +39,155 @@ const HomeServices = () => {
   };
 
   return (
-    <section className="py-19 px-1 sm:px-8 bg-gradient-to-b from-[#0f0f0f] to-[#1a1a1a] text-white">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Title */}
-        <div className="text-center mb-16">
-          <p className="text-orange-400 text-sm uppercase tracking-widest mb-2">Complete Koi Solutions</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+    <Motion.section
+      className="relative py-24 px-4 sm:px-6 md:px-10 bg-gradient-to-b from-[#111111] via-[#171717] to-[#111111] text-white overflow-hidden"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <div className="pointer-events-none absolute -top-20 -left-12 h-72 w-72 rounded-full bg-orange-500/15 blur-3xl" />
+      <div className="pointer-events-none absolute top-32 -right-10 h-72 w-72 rounded-full bg-red-500/10 blur-3xl" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <Motion.div variants={itemVariants} className="text-center mb-14">
+          <p className="inline-flex items-center gap-2 text-orange-300 text-xs uppercase tracking-[0.2em] mb-3 border border-orange-500/30 bg-orange-500/10 rounded-full px-4 py-1">
+            Complete Koi Solutions
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             Sri Lanka's <span className="text-orange-500">Koi</span> Ecosystem
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">From award-winning breeders to professional pond services, everything you need for a thriving koi collection</p>
-        </div>
+          <div className="h-1 w-28 rounded-full bg-gradient-to-r from-orange-500 via-red-500 to-orange-400 mx-auto mb-4" />
+          <p className="text-gray-200 text-base sm:text-lg max-w-3xl mx-auto">
+            From premium pond services to elite breeders, everything you need for a thriving koi collection.
+          </p>
+        </Motion.div>
 
-        {/* Columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {/* Pond Services */}
-          <div className="space-y-6">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold text-white mb-2">Premium Pond Services</h3>
-              <p className="text-gray-400 text-sm">Professional design, maintenance & water quality management</p>
-              <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 mt-3" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <Motion.div variants={itemVariants} className="space-y-5">
+            <div>
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-300 via-orange-400 to-red-400 bg-clip-text text-transparent mb-2">
+                Premium Pond Services
+              </h3>
+              <p className="text-gray-300 text-sm">Professional design, maintenance, and water quality management.</p>
             </div>
+
             {pondServices.map((service) => (
-              <div
+              <Motion.div
                 key={service.id}
+                variants={itemVariants}
                 onClick={() => toggleFlip(`service-${service.id}`)}
-                className={`relative h-52 cursor-pointer transition-all duration-500 perspective group`}
+                className="relative h-56 cursor-pointer perspective group"
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.2 }}
               >
-                {/* Front */}
+                <div className="absolute -top-20 -right-16 h-40 w-40 rounded-full bg-orange-500/10 blur-2xl pointer-events-none" />
+
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br from-[#1f1f1f] to-black p-6 rounded-2xl shadow-xl shadow-orange-500/10 border border-gray-700 flex flex-col backface-hidden transform transition-transform duration-500 ${
+                  className={`absolute inset-0 rounded-2xl border border-gray-500/70 bg-gradient-to-br from-[#303030] to-[#1a1a1a] p-5 shadow-[0_12px_30px_rgba(0,0,0,0.35)] flex flex-col backface-hidden transform transition-all duration-500 ${
                     flippedCards[`service-${service.id}`]
                       ? 'opacity-0 rotate-y-180'
-                      : 'opacity-100'
+                      : 'opacity-100 group-hover:border-orange-500/50'
                   }`}
                 >
-                  <img src={service.icon} alt="" className="w-10 h-10 mb-3" />
+                  <img src={service.icon} alt={service.title} loading="lazy" className="w-12 h-12 rounded-lg object-cover border border-white/20 mb-3" />
                   <h4 className="text-lg font-semibold text-white mb-2">{service.title}</h4>
-                  <p className="text-gray-300 text-sm">{service.front}</p>
-                  <div className="mt-auto text-orange-400 text-sm underline">
-                    Click to learn more →
-                  </div>
+                  <p className="text-sm text-gray-200">{service.front}</p>
+                  <p className="mt-auto text-xs text-orange-300 uppercase tracking-wider">Tap to see details</p>
                 </div>
 
-                {/* Back */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br from-orange-900/10 to-red-900/10 p-6 rounded-2xl shadow-xl shadow-orange-500/10 border border-orange-500/20 flex flex-col backface-hidden transform transition-transform duration-500 ${
+                  className={`absolute inset-0 rounded-2xl border border-orange-500/30 bg-gradient-to-br from-[#2a2a2a] to-[#171717] p-5 shadow-[0_12px_30px_rgba(249,115,22,0.15)] flex flex-col backface-hidden transform transition-all duration-500 ${
                     flippedCards[`service-${service.id}`]
                       ? 'opacity-100 rotate-y-0'
                       : 'opacity-0 rotate-y-180'
                   }`}
                 >
-                  <h4 className="text-lg font-semibold mb-2 text-orange-400">{service.title}</h4>
-                  <p className="text-gray-300 text-sm mb-4">{service.back}</p>
-                  <button className="mt-auto bg-gradient-to-r from-red-600 to-orange-500 hover:from-orange-600 hover:to-red-700 text-white font-semibold px-4 py-2 rounded-lg shadow-lg transition-transform hover:scale-105 w-max">
+                  <h4 className="text-lg font-semibold text-orange-300 mb-2">{service.title}</h4>
+                  <p className="text-sm text-gray-200 mb-4">{service.back}</p>
+                  <button
+                    type="button"
+                    className="mt-auto w-max bg-gradient-to-r from-orange-500 to-red-600 text-white py-2.5 px-4 rounded-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all duration-300"
+                  >
                     Request Service
                   </button>
                 </div>
-              </div>
+              </Motion.div>
             ))}
-          </div>
+          </Motion.div>
 
-          {/* Breeders */}
-          <div className="space-y-6">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold text-white mb-2">Certified Breeder Network</h3>
-              <p className="text-gray-400 text-sm">Connect with Sri Lanka's most trusted and experienced koi breeders</p>
-              <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 mt-3" />
+          <Motion.div variants={itemVariants} className="space-y-5">
+            <div>
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-300 via-orange-400 to-red-400 bg-clip-text text-transparent mb-2">
+                Top Rated Breeders
+              </h3>
+              <p className="text-gray-300 text-sm">Showing the highest-rated 2 breeders for quick trusted discovery.</p>
             </div>
-            {breeders.map((breeder) => (
-              <div
+
+            {topRatedBreeders.map((breeder) => (
+              <Motion.div
                 key={breeder.id}
+                variants={itemVariants}
                 onClick={() => toggleFlip(`breeder-${breeder.id}`)}
-                className={`relative h-52 cursor-pointer transition-all duration-500 perspective group`}
+                className="relative h-56 cursor-pointer perspective group"
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.2 }}
               >
-                {/* Front */}
+                <div className="absolute -top-20 -right-16 h-40 w-40 rounded-full bg-orange-500/10 blur-2xl pointer-events-none" />
+
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br from-[#1f1f1f] to-black p-6 rounded-2xl shadow-xl shadow-orange-500/10 border border-gray-700 flex items-start backface-hidden transform transition-transform duration-500 ${
+                  className={`absolute inset-0 rounded-2xl border border-gray-500/70 bg-gradient-to-br from-[#303030] to-[#1a1a1a] p-5 shadow-[0_12px_30px_rgba(0,0,0,0.35)] flex items-start backface-hidden transform transition-all duration-500 ${
                     flippedCards[`breeder-${breeder.id}`]
                       ? 'opacity-0 rotate-y-180'
-                      : 'opacity-100'
+                      : 'opacity-100 group-hover:border-orange-500/50'
                   }`}
                 >
                   <img
                     src={breeder.image}
                     alt={breeder.name}
-                    className="w-16 h-16 rounded-full object-cover mr-4 ring-2 ring-orange-500/40 group-hover:ring-4 transition-all duration-300"
+                    loading="lazy"
+                    className="w-16 h-16 rounded-xl object-cover mr-4 border border-white/20"
                   />
-                  <div>
-                    <h4 className="text-lg font-semibold text-white">{breeder.name}</h4>
-                    <p className="text-sm text-orange-400 mb-1">{breeder.specialty}</p>
-                    <p className="text-sm text-gray-300 mb-2">{breeder.front}</p>
-                    <div className="flex items-center text-sm text-gray-400">
-                      <span className="text-yellow-500">★ {breeder.rating}</span>
-                      <span className="mx-2">•</span>
+                  <div className="min-w-0">
+                    <h4 className="text-lg font-semibold text-white leading-tight mb-1">{breeder.name}</h4>
+                    <p className="text-sm text-orange-300 mb-2">{breeder.specialty}</p>
+                    <p className="text-sm text-gray-200 mb-3 line-clamp-2">{breeder.front}</p>
+                    <div className="flex items-center gap-2 text-xs text-gray-300">
+                      <span className="px-2 py-1 rounded-full bg-gradient-to-r from-orange-500 to-red-600 text-white font-semibold">
+                        ★ {breeder.rating}
+                      </span>
                       <span>{breeder.koiBred} koi bred</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Back */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br from-orange-900/10 to-red-900/10 p-6 rounded-2xl shadow-xl shadow-orange-500/10 border border-orange-500/20 flex flex-col backface-hidden transform transition-transform duration-500 ${
+                  className={`absolute inset-0 rounded-2xl border border-orange-500/30 bg-gradient-to-br from-[#2a2a2a] to-[#171717] p-5 shadow-[0_12px_30px_rgba(249,115,22,0.15)] flex flex-col backface-hidden transform transition-all duration-500 ${
                     flippedCards[`breeder-${breeder.id}`]
                       ? 'opacity-100 rotate-y-0'
                       : 'opacity-0 rotate-y-180'
                   }`}
                 >
-                  <h4 className="text-lg font-semibold text-orange-400 mb-2">{breeder.name}</h4>
-                  <p className="text-sm text-gray-300 mb-3">{breeder.back}</p>
-                  <div className="mt-auto flex justify-between items-center">
-                    <span className="bg-orange-500/10 text-orange-400 py-1 px-3 rounded-full text-xs">
+                  <h4 className="text-lg font-semibold text-orange-300 mb-2">{breeder.name}</h4>
+                  <p className="text-sm text-gray-200 mb-3 line-clamp-2">{breeder.back}</p>
+                  <div className="mt-auto flex items-center justify-between gap-3">
+                    <span className="text-[10px] uppercase tracking-wider border border-orange-500/30 bg-orange-500/10 text-orange-200 rounded-full px-2 py-1">
                       {breeder.specialty}
                     </span>
-                    <button className="bg-gradient-to-r from-red-600 to-orange-500 hover:from-orange-600 hover:to-red-700 text-white font-semibold py-1 px-4 rounded-lg text-sm transition-transform hover:scale-105">
+                    <button
+                      type="button"
+                      className="bg-gradient-to-r from-orange-500 to-red-600 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:from-orange-600 hover:to-red-700 transition-all duration-300"
+                    >
                       View Stock
                     </button>
                   </div>
                 </div>
-              </div>
+              </Motion.div>
             ))}
-          </div>
+          </Motion.div>
         </div>
       </div>
 
-      {/* Flip Card Animations */}
       <style jsx>{`
         .perspective {
           perspective: 1000px;
@@ -151,7 +202,7 @@ const HomeServices = () => {
           transform: rotateY(0deg);
         }
       `}</style>
-    </section>
+    </Motion.section>
   );
 };
 

@@ -1,46 +1,66 @@
 import React, { useState } from 'react';
+import { motion as Motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { koiVarieties } from '../assets/assets';
 
 const KoiCard = ({ koi, index, isActive, onHover, onLeave }) => {
   return (
     <div
-      className={`relative group cursor-pointer transition-all duration-700 ${
+      className={`group bg-[#111111] border border-zinc-800 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(249,115,22,0.15)] hover:border-orange-500/40 flex flex-col ${
         isActive ? 'scale-105 z-10' : 'scale-100'
       }`}
       onMouseEnter={() => onHover(index)}
       onMouseLeave={onLeave}
       style={{ animationDelay: `${index * 150}ms` }}
     >
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 shadow-2xl">
-        <div className="relative h-90 overflow-hidden">
-          <img
-            src={koi.image}
-            alt={koi.name}
-            className={`w-full h-full object-cover transition-all duration-1000 ${
-              isActive ? 'scale-110 brightness-110' : 'scale-100'
-            }`}
-            loading="lazy"
-          />
-          <div className="relative inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          <div className=" inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-red-500/10" />
-          <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-orange-500/30">
-            <span className="text-white font-bold text-sm tracking-wide">{koi.name}</span>
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        </div>
+      <div className="w-full overflow-hidden">
+        <img
+          src={koi.image}
+          alt={koi.name}
+          loading="lazy"
+          className="w-full h-44 sm:h-52 object-cover transition-transform duration-700 hover:scale-105"
+        />
+      </div>
 
-        <div className="p-4 relative">
-          <div className="w-12 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 mb-4 transition-all duration-500 group-hover:w-20" />
-          <button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white text-xs font-bold px-4 py-2 rounded-lg uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-red-500/25 mb-3">
-            {koi.category}
-          </button>
-          <p className="text-gray-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-            {koi.description}
-          </p>
-          <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-red-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-        </div>
+      <div className="p-4 sm:p-5 flex flex-col flex-1">
+        <div className="h-0.5 w-10 rounded-full bg-gradient-to-r from-orange-500 to-red-600 mb-4 transition-all duration-500 group-hover:w-20" />
 
-        <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-orange-500/50 transition-all duration-500" />
+        <span className="self-start text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-300 mb-3">
+          {koi.category}
+        </span>
+
+        <h3 className="text-lg font-bold text-white mb-2 leading-snug">
+          {koi.name}
+        </h3>
+
+        <p className="text-sm text-gray-400 leading-relaxed flex-1 mb-5 line-clamp-2 sm:line-clamp-3">
+          {koi.description}
+        </p>
+
+        <div className="flex items-center justify-between mt-auto pt-3 border-t border-white/5">
+          <Link
+            to={`/shop?variety=${encodeURIComponent(koi.name)}`}
+            className="inline-flex items-center gap-2 text-orange-300 text-xs font-semibold uppercase tracking-wider hover:text-orange-200 transition-colors duration-200 group"
+          >
+            View in Shop
+            <svg
+              width="18"
+              height="12"
+              viewBox="0 0 22 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            >
+              <path
+                d="M4.583 7.5h12.834M11 3.125 17.417 7.5 11 11.875"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -58,7 +78,7 @@ const BackgroundElements = () => (
 );
 
 const SectionTitle = ({ title, subtitle }) => (
-  <div className="text-center mb-16">
+  <div className="text-center mb-8 md:mb-10">
     <p className="text-orange-400 text-sm uppercase tracking-widest mb-2">Bred with Excellence</p>
     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">{title}</h2>
     <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-4">{subtitle}</p>
@@ -67,17 +87,17 @@ const SectionTitle = ({ title, subtitle }) => (
 );
 
 const CTA = () => (
-  <div className="text-center mt-16">
-    <div className="bg-gradient-to-r from-gray-900/50 to-black/50 backdrop-blur-sm border border-orange-500/30 rounded-2xl p-8 shadow-2xl">
+  <div className="text-center mt-6 md:mt-8">
+    <div className="bg-gradient-to-r from-gray-900/50 to-black/50 backdrop-blur-sm border border-orange-500/30 rounded-2xl p-6 md:p-8 shadow-2xl">
       <h3 className="text-2xl font-bold text-white mb-3">Ready to Start Your Koi Journey?</h3>
       <p className="text-gray-300 mb-6 max-w-xl mx-auto">Connect with Sri Lanka's finest breeders and find koi that match your passion and pond</p>
       <div className="flex flex-wrap gap-4 justify-center">
-        <button className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-orange-500/50">
+        <Link to="/shop" className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-orange-500/50">
           Browse All Varieties
-        </button>
-        <button className="bg-white/10 hover:bg-white/20 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105">
+        </Link>
+        <Link to="/breeders" className="bg-white/10 hover:bg-white/20 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105">
           Meet Breeders
-        </button>
+        </Link>
       </div>
     </div>
   </div>
@@ -86,30 +106,55 @@ const CTA = () => (
 const KoiVarieties = () => {
   const [activeCard, setActiveCard] = useState(null);
 
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut', staggerChildren: 0.12 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut' } },
+  };
+
   return (
-    <section className="relative bg-black text-white py-32 px-6 md:px-12 overflow-hidden">
+    <Motion.section
+      className="relative bg-black text-white py-12 md:py-16 px-4 sm:px-6 md:px-10 overflow-hidden"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+    >
       <BackgroundElements />
       <div className="max-w-7xl mx-auto relative z-10">
-        <SectionTitle
-          title="Discover Premium Koi Varieties"
-          subtitle="Authentic Japanese bloodlines, expertly bred and cared for in Sri Lanka's perfect climate"
-        />
+        <Motion.div variants={itemVariants}>
+          <SectionTitle
+            title="Discover Premium Koi Varieties"
+            subtitle="Authentic Japanese bloodlines, expertly bred and cared for in Sri Lanka's perfect climate"
+          />
+        </Motion.div>
 
         {/* 📌 UPDATED: more flexible and wider-spread layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-          {koiVarieties.map((koi, index) => (
-            <KoiCard
-              key={koi.id}
-              koi={koi}
-              index={index}
-              isActive={activeCard === index}
-              onHover={setActiveCard}
-              onLeave={() => setActiveCard(null)}
-            />
+          {koiVarieties.slice(0, 4).map((koi, index) => (
+            <Motion.div key={koi.id} variants={itemVariants}>
+              <KoiCard
+                koi={koi}
+                index={index}
+                isActive={activeCard === index}
+                onHover={setActiveCard}
+                onLeave={() => setActiveCard(null)}
+              />
+            </Motion.div>
           ))}
         </div>
 
-        <CTA />
+        <Motion.div variants={itemVariants}>
+          <CTA />
+        </Motion.div>
       </div>
 
       <style jsx>{`
@@ -123,7 +168,7 @@ const KoiVarieties = () => {
           animation: float 6s ease-in-out infinite;
         }
       `}</style>
-    </section>
+    </Motion.section>
   );
 };
 
